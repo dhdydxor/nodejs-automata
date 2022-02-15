@@ -1,0 +1,16 @@
+.idea/
+.vscode/
+node_modules/
+
+build/
+dist/
+
+tmp/
+temp/
+
+airtm/
+airtm*
+
+ormconfig.js
+jwt-config.js
+yarn-error.log
