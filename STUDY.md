@@ -312,20 +312,167 @@ console.log(LIBS.Human); // lib_ 안에 Human 클래스
 
 # lambda, 화살표함수, anonymous function
 
+> **`lambda`**
+
+```java
+public static void main(String[] args){
+   List<Integer> numbers = Array.asList(1,2,3,4,5);
+
+   // 기본
+   for(int number:numbers){
+      System.out.println(number);
+   }
+
+   //람다
+   numbers.forEach((Integer value) -> System.out.println(value));
+}
+```
+
+> **`화살표함수`**
+
+```ts
+const add = (num1: number, num2: number): number => num1 + num2;
+```
+
+> **`anonymous function`**
+
+```ts
+let result = function(a,b){
+   return a + b;
+}
+let data = result(1,2)
+```
+
 # async, await, Promise
+
+> **`await`**
+
+```ts
+const promise = new Promise((resolve, reject) => {
+   resolve(1);
+})
+```
+
+> **`await`**
+
+```ts
+let value = await Promise
+```
+
+> **`async`**
+
+```ts
+const test = async() => {
+   await Promise
+}
+```
 
 # class 생성, function 생성
 
+> **`class 생성`**
+
+```ts
+class Shape {
+   name: string;
+
+   constructor(name: string) {
+      this.name = name;
+   }
+}
+```
+
+> **`function 생성`**
+
+```ts
+function test(a: number, b: number): number {
+
+}
+
+test(1,2);
+```
+
+
+> **`instance 생성`**
+
 - instance 생성
+
+```ts
+class test{
+   name: string;
+   age: number;
+
+   constructor(name: string = "Hong"){
+      this.name = name;
+   }
+}
+
+let realTest:test = new test();
+```
+
+> **`singleton pattern`**
+
 - singleton pattern
+
+```ts
+class test{
+   private static instance: test;
+
+   public name:string;
+
+   private constructor(name:string){
+      this.name = name;
+   }
+
+   public static getTest() {
+      if(!test.instance){
+         test.instance = new test('test');
+      }
+      return test.instance;
+   }
+}
+```
+
 
 # 정규식, 정규표현식
 
+> **`정규식`**
+
+```ts
+let re = /ab+c/;
+```
+
+> **`정규표현식`**
+
+```ts
+let pattern = /a/;
+let ptt = new RegExp('a');
+```
 
 # 전처리 preprocessor
-@ decorator
-```
+
+
+> **`@ decorator`**
+
+```ts
+function deco(target, name){
+   console.log('deco');
+}
+class test{
+   @deco
+   animalKind = 'dog'
+}
 ```
 
 # Generic `class<T>`
+
+> **`Generic`**
+
+```ts
+// <T>는 타입변수(Type variables)이다.
+// Generic을 사용할 때 <>안에 식별자를 넣어서 사용한다.
+
+function test<T>(a: T): T {
+   return a;
+}
+```
 
