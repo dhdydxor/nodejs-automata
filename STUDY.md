@@ -1,5 +1,7 @@
 # 변수선언
 
+[basic-types](https://www.typescriptlang.org/docs/handbook/basic-types.html)
+
 - 타입선언
 ```ts
 
@@ -8,6 +10,12 @@ let numTest: number = 0; // 숫자형
 let blnTest: boolean = true; // 논리형
 let anyTest: any = true; //  어떤 타입이든 들어갈 수 있다.
 let strNumTest: string | number = '0'; // 문자열이나 숫자가 나올 때
+
+let un: undefined;
+let u: k
+
+let a: "master" | "main";
+let b: 1 | 2 ;
 
 ```
 
@@ -45,19 +53,31 @@ profile.month = 8; // 할당 가능
 - 파라미터 타입선언
 ```ts
 
-function test(a: number, b: number, c: number){
+function test(a: number, b: number, c: number = 0)
+{
 
 }
+
+test(1,2);
+
+function question(a!: any, b?: any = 0)
+{
+
+}
+
+question(1);
 
 test(1,2,3);
 
 ```
 
 
+
 - 리턴타입 타입선언
 ```ts
 
-function test(a: number, b: number): number{
+function test(a: number, b: number): number | string
+{
    return a + b;
 }
 
@@ -157,7 +177,7 @@ let interTest: Test[] = [
 
 - tuple
 ```ts
-let tuple: [string, number]; 
+let tuple: [string, number];
 tuple = ['a',1];
 tuple = [1,'a'];
 // 배열과 차이점은 정해진 타입의 고정된 길이 배열을 표현한다.
@@ -170,7 +190,7 @@ class Test{
    a: number;
    b: number;
 
-   donstructor(a: number, b: number){
+   constructor(a: number, b: number){
       this.a = a;
       this.b = b;
    }
@@ -188,15 +208,23 @@ interface InterTest{
 
 # enum
 ```ts
-enum Week {
-  Sun,
-  Mon,
-  Tue,
-  Wed,
-  Thu = 11,
-  Fri,
-  Sat
+enum Week
+{
+  Sun, Mon, Tue, Wed, Thu = 11, Fri, Sat
 }
+
+switch(week)
+{
+   case Week.Sun:
+      break;
+}
+
+
+// let week = prompt("이번주는 무슨 요일?");
+
+
+
+
 console.log(Week.Mon); // 1
 console.log(Week.Tue); // 2
 
@@ -217,15 +245,18 @@ type test {
 
 let a: test = {a: 1, b: 'nobody'};
 ```
+>>> Type 선언시
+>>> 1. default 값이 들어 가는 방법.
+>>> 2. Generic을 이용하는 방법.
 
 # type 확인
 
 - instanceof
 ```ts
-var Person = function(){ 
-   this.name = "unikys"; 
-}; 
-var inst = new Person(); 
+var Person = function(){
+   this.name = "unikys";
+};
+var inst = new Person();
 inst instanceof Person;  // true
 inst instanceof Object; // true
 typeof inst; // 'object'
@@ -242,29 +273,40 @@ const varNum: typeof num = num;
 
 # import, require, export
 
+> **`lib.ts`**
+>
 ```ts
-const pi_ = Math.PI;
+class LIBS
+{
+   public const pi_ = Math.PI;
 
-function testX(x){
-   return x+x;
-}
-console.log(testX(10));
+   public function testX(x)
+   {
+      return x+x;
+   }
 
-class Human{
-   name:string
-   constructor(name){
-      this.name=name;
+   public class Human
+   {
+      name:string
+
+      constructor(name)
+      {
+         this.name=name;
+      }
    }
 }
 
-export {pi_, testX, Human};
-// export는 모듈에서 데이터를 내보낼 때
+export default LIBS; // export는 모듈에서 데이터를 내보낼 때
+```
 
-import * as test from './.lib_';
+> **`index.ts`**
+>
+```ts
+import LIBS from './lib';
 
-console.log(lib_.pi_); // lib_ 안에 pi_ 변수
-console.log(lib_.testX); // lib_ 안에 testX 함수
-console.log(lib_.Human); // lib_ 안에 Human 클래스
+console.log(LIBS.pi_); // lib_ 안에 pi_ 변수
+console.log(LIBS.testX); // lib_ 안에 testX 함수
+console.log(LIBS.Human); // lib_ 안에 Human 클래스
 // import는 모듈에서 데이터를 불러올 때
 ```
 
@@ -278,4 +320,12 @@ console.log(lib_.Human); // lib_ 안에 Human 클래스
 - singleton pattern
 
 # 정규식, 정규표현식
+
+
+# 전처리 preprocessor
+@ decorator
+```
+```
+
+# Generic `class<T>`
 
