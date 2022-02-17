@@ -1,10 +1,8 @@
-import { getRepository } from "typeorm";
 import { NextFunction, Request, Response } from "express";
-import { User } from "src/model/entity/user/User";
 
 export class UserController
 {
-    userRepository = getRepository(User);
+    userRepository: any = {};
 
     async list(request: Request, response: Response, next: NextFunction)
     {
