@@ -9,6 +9,24 @@ describe('UserUtils', () =>
     expect(result).to.not.equal(undefined);
   }
 
+  it("HttpRequest.get('https://hycheck-gyeryong.neoidm.com:8989/api/hycheck/client/') != undefined");
+  {
+    let result: any = HttpRequest.get('https://hycheck-gyeryong.neoidm.com:8989/api/hycheck/client/');
+    expect(result).to.not.equal(undefined);
+  }
+
+  it("HttpRequest.get('https://hycheck-gyeryong.neoidm.com:8989/api/hycheck/data/') != undefined");
+  {
+    let result: any = HttpRequest.get('https://hycheck-gyeryong.neoidm.com:8989/api/hycheck/data/');
+    expect(result).to.not.equal(undefined);
+  }
+
+  it("HttpRequest.put('https://hycheck-gyeryong.neoidm.com:8989/api/hycheck/data/correct/device/') != undefined");
+  {
+    let result: any = HttpRequest.put('https://hycheck-gyeryong.neoidm.com:8989/api/hycheck/data/correct/device/');
+    expect(result).to.not.equal(undefined);
+  }
+
   it('checkExistUserEmail("dev@ctrls.to")', async () =>
   {
     /* let a: any = await UserRepository.getUserEmail("dev@ctrls.to");
