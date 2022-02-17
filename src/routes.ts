@@ -1,12 +1,6 @@
-import { AuthRoute } from "./route/AuthRoute";
 import { UserRoute } from "./route/UserRoute";
 
 export const Routes =
     [
-        ...AuthRoute, ...UserRoute,
+        ...UserRoute,
     ];
-
-    // user
-    // auth
-    // note
-    // email
