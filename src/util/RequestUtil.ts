@@ -1,8 +1,10 @@
 const RequestUtil =
 {
-   login: (id: string, pw: string): boolean =>
+   // if({request result object}.status == 401) return undefined;
+
+   getAuthToken: (id: string, pw: string): string =>
    {
-      return false;
+      return '';
    },
 
    getConsumerValueList: (PK: string): object =>
@@ -10,15 +12,12 @@ const RequestUtil =
       return {};
    },
 
-   putValue: (PK: string, unixtime: string, v: string) =>
+   putValue: (PK: string, unixtime: string, v: string): boolean =>
    {
       return;
-   },
-
-   encodeBase64: (src: string): string =>
-   {
-      return '';
    }
+
+
 };
 
 export default RequestUtil;

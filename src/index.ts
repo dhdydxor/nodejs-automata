@@ -1,7 +1,7 @@
 import express, { Request, Response } from 'express';
 import 'reflect-metadata';
 import { Routes } from 'src/routes';
-import { StringUtils } from 'src/util/StringUtils';
+import StringUtils from 'src/util/StringUtil';
 
 const app = express();
 app.use(express.urlencoded({ extended: true }));

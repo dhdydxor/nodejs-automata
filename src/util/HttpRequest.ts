@@ -15,12 +15,12 @@ const HttpRequest =
       return {};
    },
 
-   get: (uri: string, parameter: object | undefined): object =>
+   get: (uri: string, parameter?: object | undefined): object =>
    {
       return {};
    },
 
-   put: (uri: string, parameter: any | undefined): any =>
+   put: (uri: string, parameter?: any | undefined): any =>
    {
       return {};
    },

@@ -1,3 +1,5 @@
+import { Consumer, ConsumerMeter } from "src/type/TypeAlias";
+
 const ParseUtil =
 {
    consumerListJsonToConsumerArray: (list: object): Consumer[] =>
