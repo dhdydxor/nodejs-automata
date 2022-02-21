@@ -1,5 +1,5 @@
 import { assert, expect } from "chai";
-import RequestUtil from "src/util/RequestUtil";
+import RequestUtil from "../../src/util/RequestUtil";
 
 describe('UserUtils', () =>
 {
