@@ -1,11 +1,18 @@
-import fetch from 'node-fetch';
+import axios, { AxiosResponse } from 'axios';
 
 const HttpRequest =
 {
-   post: async (uri: string, parameter?: object): Promise<any> =>
+   post: async (uri: string, parameter?: object) =>
    {
-      const response = await fetch(uri, { method: 'post', body: JSON.stringify(parameter), headers: { 'Content-Type': 'application/json' } });
-      return await response.json();
+      try
+      {
+         const response: AxiosResponse<string> = await axios.post(uri, parameter);
+         return response.data;
+      }
+      catch (error)
+      {
+         return error.response.data;
+      }
    },
 
    get: (uri: string, parameter?: object | undefined): object | undefined =>
