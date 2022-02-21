@@ -17,13 +17,18 @@ describe('UserUtils', () =>
     assert.notEqual(result, undefined);
   });
 
-  /* it("HttpRequest.get !== undefined", () =>
+  it("HttpRequest.get !== undefined", async () =>
   {
-    let result: any = HttpRequest.get('https://hycheck-gyeryong.neoidm.com:8989/api/hycheck/client/');
+    const parameters: any = {
+      clientId: process.env.TEST_CLIENT_ID,
+      endPoint: process.env.TEST_END_POINT
+    }
+    const result: any = await HttpRequest.get('https://hycheck-gyeryong.neoidm.com:8989/api/hycheck/client/', parameters);
+
     assert.notEqual(result, undefined);
   });
 
-  it("HttpRequest.put !== undefined", () =>
+  /* it("HttpRequest.put !== undefined", () =>
   {
     let result: any = HttpRequest.put('https://hycheck-gyeryong.neoidm.com:8989/api/hycheck/data/correct/device/');
     assert.notEqual(result, undefined);

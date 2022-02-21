@@ -1,4 +1,5 @@
 import axios, { AxiosResponse } from 'axios';
+import Response from 'express';
 
 const HttpRequest =
 {
@@ -15,12 +16,22 @@ const HttpRequest =
       }
    },
 
-   get: (uri: string, parameter?: object | undefined): object | undefined =>
+   get: async (uri: string, parameter?: object) =>
    {
-      return undefined;
+      try
+      {
+         const response: AxiosResponse<string> = await axios.get(uri, parameter);
+         return response.data;
+      }
+      catch(error)
+      {
+         return error.response.data;
+      }
+
+      
    },
 
-   put: (uri: string, parameter?: any | undefined): any =>
+   /* put: (uri: string, parameter?: any | undefined): any =>
    {
       return undefined;
    },
@@ -28,7 +39,7 @@ const HttpRequest =
    getBinary: (uri: string, parameter: object | undefined): any =>
    {
 
-   }
+   } */
 
 };
 
