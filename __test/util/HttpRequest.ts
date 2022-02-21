@@ -1,17 +1,20 @@
 import { assert, expect } from "chai";
 import HttpRequest from "../../src/util/HttpRequest";
 
+require('dotenv').config();
+
 describe('UserUtils', () =>
 {
   it("HttpRequest.post !== undefined", async () =>
   {
     const parameters: any = {
       userid: process.env.TEST_LOGIN_ID,
-      password: process.env.TEST_LOGIN_PW
+      password: process.env.TEST_DECODE
     };
-    const result: any = await HttpRequest.post('https://hycheck-gyeryong.neoidm.com:8989/api/login/', parameters);
 
-    expect(result).to.not.equal(undefined);
+    const result = await HttpRequest.post("https://hycheck-gyeryong.neoidm.com:8989/api/login/", parameters);
+
+    assert.notEqual(result, undefined);
   });
 
   /* it("HttpRequest.get !== undefined", () =>
