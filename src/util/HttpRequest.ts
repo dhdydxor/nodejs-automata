@@ -1,18 +1,11 @@
+import fetch from 'node-fetch';
+
 const HttpRequest =
 {
-   post: (uri: string, parameter?: object): object | undefined =>
+   post: async (uri: string, parameter?: object): Promise<any> =>
    {
-      /**
-       * if( fet(uri)) )
-       * {
-       *    return response;
-       * }
-       * else
-       * {
-       *    return undefined;
-       * }
-       */
-      return undefined;
+      const response = await fetch(uri, { method: 'post', body: JSON.stringify(parameter), headers: { 'Content-Type': 'application/json' } });
+      return await response.json();
    },
 
    get: (uri: string, parameter?: object | undefined): object | undefined =>

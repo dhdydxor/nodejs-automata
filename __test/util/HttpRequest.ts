@@ -1,16 +1,20 @@
-import { assert, expect, should } from "chai";
-import HttpRequest from "src/util/HttpRequest";
-import RequestUtil from "src/util/RequestUtil";
+import { assert, expect } from "chai";
+import HttpRequest from "../../src/util/HttpRequest";
 
 describe('UserUtils', () =>
 {
-  it("HttpRequest.post !== undefined", () =>
+  it("HttpRequest.post !== undefined", async () =>
   {
-    let result: any = HttpRequest.post('https://hycheck-gyeryong.neoidm.com:8989/api/login/');
-    assert.notEqual(result, undefined);
+    const parameters: any = {
+      userid: process.env.TEST_LOGIN_ID,
+      password: process.env.TEST_LOGIN_PW
+    };
+    const result: any = await HttpRequest.post('https://hycheck-gyeryong.neoidm.com:8989/api/login/', parameters);
+
+    expect(result).to.not.equal(undefined);
   });
 
-  it("HttpRequest.get !== undefined", () =>
+  /* it("HttpRequest.get !== undefined", () =>
   {
     let result: any = HttpRequest.get('https://hycheck-gyeryong.neoidm.com:8989/api/hycheck/client/');
     assert.notEqual(result, undefined);
@@ -20,5 +24,5 @@ describe('UserUtils', () =>
   {
     let result: any = HttpRequest.put('https://hycheck-gyeryong.neoidm.com:8989/api/hycheck/data/correct/device/');
     assert.notEqual(result, undefined);
-  });
+  }); */
 });
