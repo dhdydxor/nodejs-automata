@@ -11,12 +11,12 @@ describe('UserUtils', () =>
     it("ParseUtil.consumerListJsonToConsumerArray(consumerListJson.json).length !== 0", () =>
     {
         let result: Consumer[] = ParseUtil.consumerListJsonToConsumerArray(consumerListJson);
-        assert.notEqual(result, []);
+        assert.notEqual(result.length, 0);
     });
 
     it("ParseUtil.consumerJsonMeterArray(consumerMeterJson.json) !== 0", () =>
     {
         let result: ConsumerMeter[] = ParseUtil.consumerJsonMeterArray(consumerMeterJson);
-        assert.notEqual(result, []);
+        assert.notEqual(result.length, 0);
     });
 });

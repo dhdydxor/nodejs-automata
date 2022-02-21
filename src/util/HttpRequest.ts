@@ -12,17 +12,17 @@ const HttpRequest =
        *    return undefined;
        * }
        */
-      return {};
+      return undefined;
    },
 
-   get: (uri: string, parameter?: object | undefined): object =>
+   get: (uri: string, parameter?: object | undefined): object | undefined =>
    {
-      return {};
+      return undefined;
    },
 
    put: (uri: string, parameter?: any | undefined): any =>
    {
-      return {};
+      return undefined;
    },
 
    getBinary: (uri: string, parameter: object | undefined): any =>
