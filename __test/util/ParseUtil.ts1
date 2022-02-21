@@ -1,12 +1,12 @@
 import { assert, expect } from "chai";
 import { Consumer } from "src/type/TypeAlias";
-import ParseUtil from "../../src/util/ParseUtil";
-import { ConsumerMeter } from '../../src/type/TypeAlias';
+import ParseUtil from "src/util/ParseUtil";
+import { ConsumerMeter } from 'src/type/TypeAlias';
 
 describe('UserUtils', () =>
 {
-    const consumerListJson = require("./consumerList.json");
-    const consumerMeterJson = require("./consumerMeter.json");
+    const consumerListJson = require("./consumerList.test.json");
+    const consumerMeterJson = require("./consumerMeter.test.json");
 
     it("ParseUtil.consumerListJsonToConsumerArray(consumerListJson.json).length !== 0", () =>
     {
