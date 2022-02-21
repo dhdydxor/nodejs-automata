@@ -1,6 +1,15 @@
 인공신경망을 만들어봅시다
 ===
 
+# Issue
+
+1. fetch-node 모듈
+
+   TDD 시 Typescript 오류 이슈가 있음.
+
+   트렌드에 따를려는 것은 아니지만 axios 로 변경.
+
+
 # Todo
 
 - [ ] RequestUtil.getConsumerValueList 이름이 너무 직관적이지 않음, 바꿔야지
