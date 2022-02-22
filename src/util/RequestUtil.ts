@@ -4,10 +4,10 @@ const RequestUtil =
 {
    // if({request result object}.status == 401) return undefined;
 
-   getAuthToken: (id: string, pw: string): string =>
+   getAuthToken: async (id: string, pw: string) =>
    {
-      HttpRequest.post("https://hycheck-gyeryong.neoidm.com:8989/api/login/", { userid: id, password: pw })
-      return '';
+      const response = await HttpRequest.post("https://hycheck-gyeryong.neoidm.com:8989/api/login/", { userid: id, password: pw });
+      return response;
    },
 
    getConsumerValueList: (PK: string): object =>

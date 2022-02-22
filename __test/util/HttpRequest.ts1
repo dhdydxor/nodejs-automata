@@ -5,7 +5,7 @@ require('dotenv').config();
 
 describe('HttpRequest', () =>
 {
-  it("post !== undefined", async () =>
+  it("post.statusText == OK", async () =>
   {
     const parameters: any = {
       userid: process.env.TEST_LOGIN_ID,
@@ -13,28 +13,26 @@ describe('HttpRequest', () =>
     };
 
     const result = await HttpRequest.post("https://hycheck-gyeryong.neoidm.com:8989/api/login/", parameters);
-
-    assert.notEqual(result, undefined);
+    assert.equal(result.statusText, "OK");
   });
 
-  it("get !== undefined", async () =>
+  it("get.statusText == OK", async () =>
   {
     const parameters: any = {
       clientId: process.env.TEST_CLIENT_ID,
       endPoint: process.env.TEST_END_POINT
     }
     const result: any = await HttpRequest.get('https://hycheck-gyeryong.neoidm.com:8989/api/hycheck/client/', parameters);
-
-    assert.notEqual(result, undefined);
+    assert.equal(result.statusText, "OK");
   });
 
-  it("put !== undefined", async () =>
+  it("put.statusText == OK", async () =>
   {
     const parameter: any = {
       value: process.env.TEST_VALUE
     };
 
     const result: any = await HttpRequest.put('https://hycheck-gyeryong.neoidm.com:8989/api/hycheck/data/correct/device/', parameter);
-    assert.notEqual(result, undefined);
+    assert.equal(result.statusText, "OK");
   });
 });

@@ -3,19 +3,16 @@ import Response from 'express';
 
 const HttpRequest =
 {
-   post: async (uri: string, parameter?: object): Promise<object> | undefined =>
+   post: async (uri: string, parameter?: object) =>
    {
       try
       {
          const response: AxiosResponse<string> = await axios.post(uri, parameter);
-
-         console.log(response);
-
-         return JSON.parse(response.data);
+         return response;
       }
       catch (error)
       {
-         return undefined;
+         return error.response;
       }
    },
 
@@ -24,11 +21,11 @@ const HttpRequest =
       try
       {
          const response: AxiosResponse<string> = await axios.get(uri, parameter);
-         return JSON.parse(response.data);
+         return response;
       }
       catch (error)
       {
-         return undefined;
+         return error.response;
       }
 
 
@@ -39,11 +36,11 @@ const HttpRequest =
       try
       {
          const response: AxiosResponse<string> = await axios.put(uri, parameter);
-         return JSON.parse(response.data);
+         return response;
       }
       catch (error)
       {
-         return undefined;
+         return error.response;
       }
 
    },
