@@ -18,21 +18,22 @@ describe('HttpRequest', () =>
 
   it("get.statusText == OK", async () =>
   {
-    const parameters: any = {
-      clientId: process.env.TEST_CLIENT_ID,
-      endPoint: process.env.TEST_END_POINT
-    }
-    const result: any = await HttpRequest.get('https://hycheck-gyeryong.neoidm.com:8989/api/hycheck/client/', parameters);
+    const parameter: any = {
+      clientId: process.env.TEST_CLIENT_ID
+    };
+    const result: any = await HttpRequest.get('https://hycheck-gyeryong.neoidm.com:8989/api/hycheck/client/', parameter);
     assert.equal(result.statusText, "OK");
   });
 
   it("put.statusText == OK", async () =>
   {
-    const parameter: any = {
+    const parameters: any = {
+      endPoint: process.env.TEST_END_POINT,
+      unixtime: process.env.TEST_UNIXTIME,
       value: process.env.TEST_VALUE
     };
 
-    const result: any = await HttpRequest.put('https://hycheck-gyeryong.neoidm.com:8989/api/hycheck/data/correct/device/', parameter);
+    const result: any = await HttpRequest.put('https://hycheck-gyeryong.neoidm.com:8989/api/hycheck/data/correct/device/', parameters);
     assert.equal(result.statusText, "OK");
   });
 });

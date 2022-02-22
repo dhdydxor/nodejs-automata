@@ -5,13 +5,20 @@ const ParseUtil =
 {
    consumerListJsonToConsumerArray: (list: object): Consumer[] =>
    {
+
+
+
+      if (typeof list === "undefined")
+      {
       return [];
+      }
+
    },
 
    consumerJsonMeterArray: (detail: object): ConsumerMeter[] =>
    {
       return [];
-   },
+   }
 };
 
 export default ParseUtil;

@@ -4,24 +4,44 @@ import RequestUtil from "../../src/util/RequestUtil";
 require('dotenv').config();
 
 describe('RequestUtil', () =>
+
 {
-    it("login(process.env.TEST_LOGIN_ID, process.env.TEST_LOGIN_PW) !== ''", async () =>
+
+    // 로그인 token test
+    it("getAuthToken !== ''", async () =>
     {
         let result: any = await RequestUtil.getAuthToken(process.env.TEST_LOGIN_ID, process.env.TEST_DECODE);
-        console.log(result);
+
         assert.notEqual(result, '');
     });
 
-    /* it("getConsumerValueList('process.env.TEST_CLIENT_ID') !== undefined", () =>
+    // 수용가 목록
+    it("getConsumerList !== undefined", async () =>
     {
-        let result: any = RequestUtil.getConsumerValueList(process.env.TEST_CLIENT_ID);
-        assert.notEqual(result, undefined);
+        let token: any = await RequestUtil.getAuthToken(process.env.TEST_LOGIN_ID, process.env.TEST_DECODE);
+        let result: any = await RequestUtil.getConsumerList(token);
+
+        assert.notEqual(result.content, undefined);
+
     });
 
-    it("putValue(process.env.TEST_END_POINT, process.env.TEST_UNIXTIME, process.env.TEST_VALUE) !== undefined", () =>
+    // 수용가 상세 목록
+    /* it("getConsumerDetailList !== undefined", async () =>
     {
-        let result: any = RequestUtil.putValue(process.env.TEST_END_POINT, process.env.TEST_UNIXTIME, process.env.TEST_VALUE);
-        assert.notEqual(result, false);
+        let token: any = await RequestUtil.getAuthToken(process.env.TEST_LOGIN_ID, process.env.TEST_DECODE);
+        let clientId: any = await RequestUtil.getConsumerClientId(token);
+        let result: any = await RequestUtil.getConsumerDetailList(clientId, token);
+
+        assert.notEqual(result.content, undefined);
     }); */
+
+
+
+    it("putValue(process.env.TEST_END_POINT, process.env.TEST_UNIXTIME, process.env.TEST_VALUE) !== undefined", async () =>
+    {
+        let result: any = await RequestUtil.putValue(process.env.TEST_END_POINT, process.env.TEST_UNIXTIME, process.env.TEST_VALUE);
+
+        assert.notEqual(result, false);
+    });
 
 });

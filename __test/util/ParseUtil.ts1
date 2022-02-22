@@ -3,18 +3,18 @@ import { Consumer } from "../../src/type/TypeAlias";
 import ParseUtil from "../../src/util/ParseUtil";
 import { ConsumerMeter } from '../../src/type/TypeAlias';
 
-describe('UserUtils', () =>
+describe('ParseUtil', () =>
 {
-    const consumerListJson = require("./consumerList.test.json");
-    const consumerMeterJson = require("./consumerMeter.test.json");
+    const consumerListJson = require("./consumerList.json");
+    const consumerMeterJson = require("./consumerMeter.json");
 
-    it("ParseUtil.consumerListJsonToConsumerArray(consumerListJson.json).length !== 0", () =>
+    it("get.consumerListJsonToConsumerArray(consumerListJson.json).length !== 0", () =>
     {
-        let result: Consumer[] = ParseUtil.consumerListJsonToConsumerArray(consumerListJson);
+        const result: Consumer[] = ParseUtil.consumerListJsonToConsumerArray(consumerListJson);
         assert.notEqual(result.length, 0);
     });
 
-    /* it("ParseUtil.consumerJsonMeterArray(consumerMeterJson.json) !== 0", () =>
+    /* it("consumerJsonMeterArray(consumerMeterJson.json) !== 0", () =>
     {
         let result: ConsumerMeter[] = ParseUtil.consumerJsonMeterArray(consumerMeterJson);
         assert.notEqual(result.length, 0);

@@ -1,13 +1,23 @@
-import axios, { AxiosResponse } from 'axios';
+import axios, { AxiosRequestHeaders, AxiosResponse } from 'axios';
 import Response from 'express';
 
 const HttpRequest =
 {
-   post: async (uri: string, parameter?: object) =>
+   post: async (uri: string, parameter?: object, header?: AxiosRequestHeaders) =>
    {
       try
       {
-         const response: AxiosResponse<string> = await axios.post(uri, parameter);
+         if (typeof parameter === "undefined")
+         {
+            parameter = {};
+         }
+
+         if (typeof header === "undefined")
+         {
+            header = {};
+         }
+
+         const response: AxiosResponse<string> = await axios.post(uri, parameter, { headers: header });
          return response;
       }
       catch (error)
@@ -16,11 +26,22 @@ const HttpRequest =
       }
    },
 
-   get: async (uri: string, parameter?: object): Promise<object> | undefined =>
+   get: async (uri: string, parameter?: object, header?: AxiosRequestHeaders) =>
    {
       try
       {
-         const response: AxiosResponse<string> = await axios.get(uri, parameter);
+         if (typeof parameter === "undefined")
+         {
+            parameter = {};
+         }
+
+         if (typeof header === "undefined")
+         {
+            header = {};
+         }
+
+         const response: AxiosResponse<string> = await axios.get(uri, { params: parameter, headers: header });
+
          return response;
       }
       catch (error)
