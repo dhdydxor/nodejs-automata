@@ -6,8 +6,19 @@ const RequestUtil =
 
    getAuthToken: async (id: string, pw: string) =>
    {
-      const response = await HttpRequest.post("https://hycheck-gyeryong.neoidm.com:8989/api/login/", { userid: id, password: pw });
-      return response;
+      const parameters: any = {
+         userid: id,
+         password: pw
+      };
+
+      const response = await HttpRequest.post("https://hycheck-gyeryong.neoidm.com:8989/api/login/", parameters);
+
+      if (typeof response.data !== "undefined" && typeof response.data.token !== "undefined")
+      {
+         return response.data.token;
+      }
+
+      return "";
    },
 
    getConsumerValueList: (PK: string): object =>
