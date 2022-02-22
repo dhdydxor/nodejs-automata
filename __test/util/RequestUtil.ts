@@ -1,6 +1,8 @@
 import { assert, expect } from "chai";
 import RequestUtil from "../../src/util/RequestUtil";
 
+require('dotenv').config();
+
 describe('RequestUtil', () =>
 {
     it("login(process.env.TEST_LOGIN_ID, process.env.TEST_LOGIN_PW) !== ''", async () =>
