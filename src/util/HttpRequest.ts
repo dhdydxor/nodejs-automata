@@ -3,43 +3,55 @@ import Response from 'express';
 
 const HttpRequest =
 {
-   post: async (uri: string, parameter?: object) =>
+   post: async (uri: string, parameter?: object): Promise<object> | undefined =>
    {
       try
       {
          const response: AxiosResponse<string> = await axios.post(uri, parameter);
-         return response.data;
+
+         console.log(response);
+
+         return JSON.parse(response.data);
       }
       catch (error)
       {
-         return error.response.data;
+         return undefined;
       }
    },
 
-   get: async (uri: string, parameter?: object) =>
+   get: async (uri: string, parameter?: object): Promise<object> | undefined =>
    {
       try
       {
          const response: AxiosResponse<string> = await axios.get(uri, parameter);
-         return response.data;
+         return JSON.parse(response.data);
       }
-      catch(error)
+      catch (error)
       {
-         return error.response.data;
+         return undefined;
       }
 
-      
+
    },
 
-   /* put: (uri: string, parameter?: any | undefined): any =>
+   put: async (uri: string, parameter?: any | undefined): Promise<any> =>
    {
-      return undefined;
+      try
+      {
+         const response: AxiosResponse<string> = await axios.put(uri, parameter);
+         return JSON.parse(response.data);
+      }
+      catch (error)
+      {
+         return undefined;
+      }
+
    },
 
    getBinary: (uri: string, parameter: object | undefined): any =>
    {
 
-   } */
+   }
 
 };
 

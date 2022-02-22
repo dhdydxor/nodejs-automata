@@ -3,9 +3,9 @@ import HttpRequest from "../../src/util/HttpRequest";
 
 require('dotenv').config();
 
-describe('UserUtils', () =>
+describe('HttpRequest', () =>
 {
-  it("HttpRequest.post !== undefined", async () =>
+  it("post !== undefined", async () =>
   {
     const parameters: any = {
       userid: process.env.TEST_LOGIN_ID,
@@ -17,7 +17,7 @@ describe('UserUtils', () =>
     assert.notEqual(result, undefined);
   });
 
-  it("HttpRequest.get !== undefined", async () =>
+  it("get !== undefined", async () =>
   {
     const parameters: any = {
       clientId: process.env.TEST_CLIENT_ID,
@@ -28,9 +28,13 @@ describe('UserUtils', () =>
     assert.notEqual(result, undefined);
   });
 
-  /* it("HttpRequest.put !== undefined", () =>
+  it("put !== undefined", async () =>
   {
-    let result: any = HttpRequest.put('https://hycheck-gyeryong.neoidm.com:8989/api/hycheck/data/correct/device/');
+    const parameter: any = {
+      value: process.env.TEST_VALUE
+    };
+
+    const result: any = await HttpRequest.put('https://hycheck-gyeryong.neoidm.com:8989/api/hycheck/data/correct/device/', parameter);
     assert.notEqual(result, undefined);
-  }); */
+  });
 });
