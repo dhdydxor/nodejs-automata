@@ -79,17 +79,22 @@ const RequestUtil =
    {
       const header =
       {
-         authorization: "Bearer " + token
+         "content-type": "text/plain",
+         "accept": "application/json, text/plain, */*",
+         "authorization": `Bearer ${ token }`,
       };
 
       const response = await HttpRequest.put(`https://hycheck-gyeryong.neoidm.com:8989/api/hycheck/data/correct/device/${ endPoint }/${ unixtime }/`, value, header);
 
-      if (typeof response !== "undefined" && typeof response.data !== "undefined")
+      if (typeof response !== "undefined" && typeof response.statusText !== "undefined")
       {
-         return response;
+         if (response.statusText == "OK")
+         {
+            return true;
+         }
       }
 
-      return undefined;
+      return false;
    }
 
 
