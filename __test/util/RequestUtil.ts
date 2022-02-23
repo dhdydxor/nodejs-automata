@@ -39,7 +39,7 @@ describe('RequestUtil', () =>
  */
 
     // 검침값 변환
-    it("putValue !== undefined", async () =>
+    it("putValue != boolean", async () =>
     {
         let token: any = await RequestUtil.getAuthToken(process.env.TEST_LOGIN_ID, process.env.TEST_DECODE);
         let result: any = await RequestUtil.putValue(token, process.env.TEST_END_POINT, process.env.TEST_UNIXTIME, process.env.TEST_VALUE);
