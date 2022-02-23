@@ -44,8 +44,6 @@ describe('RequestUtil', () =>
         let token: any = await RequestUtil.getAuthToken(process.env.TEST_LOGIN_ID, process.env.TEST_DECODE);
         let result: any = await RequestUtil.putValue(token, process.env.TEST_END_POINT, process.env.TEST_UNIXTIME, process.env.TEST_VALUE);
 
-        console.log(result);
-
         assert.notEqual(result, false);
     });
 

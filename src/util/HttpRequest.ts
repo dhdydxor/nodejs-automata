@@ -1,4 +1,4 @@
-import axios, { AxiosRequestHeaders, AxiosResponse } from 'axios';
+import axios, { AxiosRequestConfig, AxiosRequestHeaders, AxiosResponse } from 'axios';
 import Response from 'express';
 
 const HttpRequest =
@@ -52,9 +52,8 @@ const HttpRequest =
 
    },
 
-   put: async (uri: string, body?: string, header?: AxiosRequestHeaders) =>
+   put: async (uri: string, body?: string, header?: any) =>
    {
-      const defaultHeader = { "content-type": "text/plain", "accept": "application/json, text/plain, */*" };
 
       try
       {
@@ -65,14 +64,10 @@ const HttpRequest =
 
          if (typeof header === "undefined")
          {
-            header = { ...defaultHeader };
-         }
-         else
-         {
-            header = { ...header, ...defaultHeader };
+            header = {};
          }
 
-         const response: AxiosResponse<string> = await axios.put(uri, body, { headers: header, data: body });
+         const response = await axios.put(uri, body, { headers: header });
 
          return response;
       }
