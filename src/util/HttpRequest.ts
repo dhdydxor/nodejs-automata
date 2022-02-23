@@ -52,11 +52,28 @@ const HttpRequest =
 
    },
 
-   put: async (uri: string, parameter?: any | undefined): Promise<any> =>
+   put: async (uri: string, body?: string, header?: AxiosRequestHeaders) =>
    {
+      const defaultHeader = { "content-type": "text/plain", "accept": "application/json, text/plain, */*" };
+
       try
       {
-         const response: AxiosResponse<string> = await axios.put(uri, parameter);
+         if (typeof body === "undefined")
+         {
+            body = "";
+         }
+
+         if (typeof header === "undefined")
+         {
+            header = { ...defaultHeader };
+         }
+         else
+         {
+            header = { ...header, ...defaultHeader };
+         }
+
+         const response: AxiosResponse<string> = await axios.put(uri, body, { headers: header, data: body });
+
          return response;
       }
       catch (error)

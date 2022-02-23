@@ -6,7 +6,7 @@ require('dotenv').config();
 describe('RequestUtil', () =>
 
 {
-
+/*
     // 로그인 token test
     it("getAuthToken !== ''", async () =>
     {
@@ -21,25 +21,30 @@ describe('RequestUtil', () =>
         let token: any = await RequestUtil.getAuthToken(process.env.TEST_LOGIN_ID, process.env.TEST_DECODE);
         let result: any = await RequestUtil.getConsumerList(token);
 
-        assert.notEqual(result.content, undefined);
+        assert.notEqual(result, undefined);
 
     });
 
     // 수용가 상세 목록
-    /* it("getConsumerDetailList !== undefined", async () =>
+    it("getConsumerDetailList !== undefined", async () =>
     {
         let token: any = await RequestUtil.getAuthToken(process.env.TEST_LOGIN_ID, process.env.TEST_DECODE);
-        let clientId: any = await RequestUtil.getConsumerClientId(token);
+        let consumerList: any = await RequestUtil.getConsumerList(token);
+        let clientId: any = consumerList[ 0 ].idClientId;
         let result: any = await RequestUtil.getConsumerDetailList(clientId, token);
 
-        assert.notEqual(result.content, undefined);
-    }); */
+        assert.notEqual(result, undefined);
+    });
 
+ */
 
-
-    it("putValue(process.env.TEST_END_POINT, process.env.TEST_UNIXTIME, process.env.TEST_VALUE) !== undefined", async () =>
+    // 검침값 변환
+    it("putValue !== undefined", async () =>
     {
-        let result: any = await RequestUtil.putValue(process.env.TEST_END_POINT, process.env.TEST_UNIXTIME, process.env.TEST_VALUE);
+        let token: any = await RequestUtil.getAuthToken(process.env.TEST_LOGIN_ID, process.env.TEST_DECODE);
+        let result: any = await RequestUtil.putValue(token, process.env.TEST_END_POINT, process.env.TEST_UNIXTIME, process.env.TEST_VALUE);
+
+        console.log(result);
 
         assert.notEqual(result, false);
     });

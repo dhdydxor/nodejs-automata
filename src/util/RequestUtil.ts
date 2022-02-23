@@ -37,7 +37,7 @@ const RequestUtil =
 
       const response = await HttpRequest.get("https://hycheck-gyeryong.neoidm.com:8989/api/hycheck/client/", parameter, header);
 
-      console.log(response.data.content);
+
 
       if (typeof response.data !== "undefined" && typeof response.data.content !== "undefined")
       {
@@ -46,7 +46,6 @@ const RequestUtil =
 
       return undefined;
    },
-
 
    getConsumerDetailList: async (clientId: string, token: string) =>
    {
@@ -67,23 +66,30 @@ const RequestUtil =
 
       const response = await HttpRequest.get("https://hycheck-gyeryong.neoidm.com:8989/api/hycheck/data/", parameters, header);
 
-      return response.data;
+      if (typeof response !== "undefined" && typeof response.data !== "undefined")
+      {
+         return response.data;
+      }
+
+      return undefined;
+
    },
 
-   putValue: async (PK: string, unixtime: string, v: string) =>
+   putValue: async (token: string, endPoint: string, unixtime: string, value: string) =>
    {
-
-      const parameters: any = {
-         clientid: PK,
-         unixtime: unixtime,
-         value: v
+      const header =
+      {
+         authorization: "Bearer " + token
       };
 
-      const response = await HttpRequest.put("https://hycheck-gyeryong.neoidm.com:8989/api/hycheck/data/correct/device/", parameters);
+      const response = await HttpRequest.put(`https://hycheck-gyeryong.neoidm.com:8989/api/hycheck/data/correct/device/${ endPoint }/${ unixtime }/`, value, header);
 
-      // console.log(response);
+      if (typeof response !== "undefined" && typeof response.data !== "undefined")
+      {
+         return response;
+      }
 
-      return;
+      return undefined;
    }
 
 
