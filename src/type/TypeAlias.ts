@@ -7,6 +7,10 @@ export type Consumer =
       isNeedAS: boolean,
    };
 
+export type GeneralObject = {
+   [ index: string ]: any;
+};
+
 export type ConsumerMeter =
    {
       datetime: Date,

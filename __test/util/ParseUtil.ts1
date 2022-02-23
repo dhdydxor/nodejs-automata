@@ -1,17 +1,19 @@
-import { assert, expect } from "chai";
+import { assert } from "chai";
 import { Consumer } from "../../src/type/TypeAlias";
 import ParseUtil from "../../src/util/ParseUtil";
-import { ConsumerMeter } from '../../src/type/TypeAlias';
+import RequestUtil from "../../src/util/RequestUtil";
 
 describe('ParseUtil', () =>
 {
-    const consumerListJson = require("./consumerList.json");
-    const consumerMeterJson = require("./consumerMeter.json");
-
-    it("get.consumerListJsonToConsumerArray(consumerListJson.json).length !== 0", () =>
+    it("consumerListJsonToConsumerArray(obj).length != 0", async () =>
     {
-        const result: Consumer[] = ParseUtil.consumerListJsonToConsumerArray(consumerListJson);
-        assert.notEqual(result.length, 0);
+        const token: any = await RequestUtil.getAuthToken(process.env.TEST_LOGIN_ID, process.env.TEST_DECODE);
+        const consumerList: any = await RequestUtil.getConsumerList(token);
+
+        ParseUtil.consumerListJsonToConsumerArray(consumerList);
+
+        // const result: Consumer[] =
+        // assert.notEqual(result.length, 0);
     });
 
     /* it("consumerJsonMeterArray(consumerMeterJson.json) !== 0", () =>

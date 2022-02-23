@@ -95,6 +95,53 @@ const RequestUtil =
       }
 
       return false;
+   },
+
+   getImageStatus: async (clientId: string, token: string) =>
+   {
+
+      const header =
+      {
+         authorization: "Bearer " + token
+      };
+
+      const response = await HttpRequest.get(`https://hycheck-gyeryong.neoidm.com:8989/api/hycheck/data/client/8001/${ clientId }`, {}, header);
+
+      if (typeof response !== "undefined" && typeof response.data !== "undefined")
+      {
+
+         return response.data;
+      }
+
+      return undefined;
+
+
+   },
+
+   getAfterServiceList: async (token: string) =>
+   {
+      const defaultParameters: object = {
+         optClientId: true,
+         exact: true,
+         resolved: false,
+         keyword: "270010002900",
+         sortColNm: "",
+         sortAsc: "asc",
+         page: 0,
+         size: 10
+      };
+
+      const header =
+      {
+         authorization: "Bearer " + token
+      };
+
+      const response = await HttpRequest.get(`https://hycheck-gyeryong.neoidm.com:8989/api/hycheck/afterservice/task/${ defaultParameters }`, {}, header);
+
+      console.log(response);
+
+      return response;
+
    }
 
 

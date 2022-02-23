@@ -6,7 +6,7 @@ require('dotenv').config();
 describe('RequestUtil', () =>
 
 {
-/*
+
     // 로그인 token test
     it("getAuthToken !== ''", async () =>
     {
@@ -36,7 +36,6 @@ describe('RequestUtil', () =>
         assert.notEqual(result, undefined);
     });
 
- */
 
     // 검침값 변환
     it("putValue !== undefined", async () =>
@@ -46,5 +45,25 @@ describe('RequestUtil', () =>
 
         assert.notEqual(result, false);
     });
+
+    it("getImageStatus !== undefined", async () =>
+    {
+        let token: any = await RequestUtil.getAuthToken(process.env.TEST_LOGIN_ID, process.env.TEST_DECODE);
+        let consumerList: any = await RequestUtil.getConsumerList(token);
+        let clientId: any = consumerList[ 0 ].idClientId;
+        let result: any = await RequestUtil.getImageStatus(clientId, token);
+
+        assert.notEqual(result, undefined);
+
+    });
+
+    it("getAfterServiceList !== undefined", async () =>
+    {
+        let token: any = await RequestUtil.getAuthToken(process.env.TEST_LOGIN_ID, process.env.TEST_DECODE);
+        let result: any = await RequestUtil.getAfterServiceList(token);
+
+        assert.notEqual(result, undefined);
+    });
+
 
 });
