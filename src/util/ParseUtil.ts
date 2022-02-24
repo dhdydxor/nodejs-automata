@@ -3,31 +3,50 @@ import axios, { AxiosResponse } from 'axios';
 
 const ParseUtil =
 {
-   consumerListJsonToConsumerArray: (list: GeneralObject): Consumer[] =>
+   consumerListJsonToConsumerArray: (content: GeneralObject): Consumer[] =>
    {
       let result: Consumer[] = [];
 
-      if (typeof list.content == "undefined")
+      if (typeof content !== "undefined")
       {
-         (list[ "content" ] as GeneralObject).map((v) =>
+         content.map((v: GeneralObject) =>
          {
-            /* let obj: Consumer = {
-               pk: v.idClientId,
-               isFailRecognize:,
-               isNeedAS:,
+            let obj: Consumer = {
                name: v.name,
-               pipeSize:
-            }; */
+               pk: v.idClientId,
+               pipeSize: v.meterDia
+            };
 
             result.push(obj);
          });
+
+         return result;
       }
 
-      return result;
+      return [];
    },
 
-   consumerJsonMeterArray: (detail: object): ConsumerMeter[] =>
+   consumerJsonMeterArray: (detail: GeneralObject): ConsumerMeter[] =>
    {
+      let result: ConsumerMeter[] = [];
+
+      if (typeof detail.content !== "undefined")
+      {
+         detail.content.map((v: GeneralObject) =>
+         {
+            let obj: ConsumerMeter = {
+               datetime: new Date(v.time),
+               unixtime: v.time,
+               imageURI: v.filepath,
+               value: v.strValue
+            };
+
+            result.push(obj);
+         });
+
+         return result;
+      }
+
       return [];
    }
 };
