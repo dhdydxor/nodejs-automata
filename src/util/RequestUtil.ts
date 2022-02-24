@@ -37,8 +37,6 @@ const RequestUtil =
 
       const response = await HttpRequest.get("https://hycheck-gyeryong.neoidm.com:8989/api/hycheck/client/", parameter, header);
 
-
-
       if (typeof response.data !== "undefined" && typeof response.data.content !== "undefined")
       {
          return response.data.content;
@@ -118,13 +116,13 @@ const RequestUtil =
 
    },
 
-   getAfterServiceList: async (token: string) =>
+   getClientIdAfterServicetASKList: async (token: string, clientId: string) =>
    {
-      const defaultParameters: object = {
+      const parameter: object = {
          optClientId: true,
          exact: true,
          resolved: false,
-         keyword: "270010002900",
+         keyword: clientId,
          sortColNm: "",
          sortAsc: "asc",
          page: 0,
@@ -136,11 +134,14 @@ const RequestUtil =
          authorization: "Bearer " + token
       };
 
-      const response = await HttpRequest.get(`https://hycheck-gyeryong.neoidm.com:8989/api/hycheck/afterservice/task/${ defaultParameters }`, {}, header);
+      const response = await HttpRequest.get("https://hycheck-gyeryong.neoidm.com:8989/api/hycheck/afterservice/task/", parameter, header);
 
-      console.log(response);
+      if (typeof response !== "undefined" && typeof response.data !== "undefined" && typeof response.data.content !== "undefined")
+      {
+         return response.data.content;
+      }
 
-      return response;
+      return undefined;
 
    }
 

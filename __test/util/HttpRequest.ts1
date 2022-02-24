@@ -5,27 +5,23 @@ require('dotenv').config();
 
 describe('HttpRequest', () =>
 {
-  it("post.statusText == OK", async () =>
+  it("post", async () =>
   {
-    const parameters: any = {
-      userid: process.env.TEST_LOGIN_ID,
-      password: process.env.TEST_DECODE
-    };
+    const parameters: any = { userid: process.env.TEST_LOGIN_ID, password: process.env.TEST_DECODE };
 
     const result = await HttpRequest.post("https://hycheck-gyeryong.neoidm.com:8989/api/login/", parameters);
-    assert.equal(result.statusText, "OK");
+    assert.notEqual(result, undefined);
   });
 
-  it("get.statusText == OK", async () =>
+  it("get", async () =>
   {
-    const parameter: any = {
-      clientId: process.env.TEST_CLIENT_ID
-    };
+    const parameter: any = { clientId: process.env.TEST_CLIENT_ID };
     const result: any = await HttpRequest.get('https://hycheck-gyeryong.neoidm.com:8989/api/hycheck/client/', parameter);
-    assert.equal(result.statusText, "OK");
+
+    assert.notEqual(result, undefined);
   });
 
-  it("put.statusText == OK", async () =>
+  it("put", async () =>
   {
     const parameters: any = {
       endPoint: process.env.TEST_END_POINT,
@@ -34,6 +30,6 @@ describe('HttpRequest', () =>
     };
 
     const result: any = await HttpRequest.put('https://hycheck-gyeryong.neoidm.com:8989/api/hycheck/data/correct/device/', parameters);
-    assert.equal(result.statusText, "OK");
+    assert.notEqual(result, undefined);
   });
 });

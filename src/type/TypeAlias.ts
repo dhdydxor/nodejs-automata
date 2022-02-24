@@ -3,8 +3,8 @@ export type Consumer =
       pk: string,
       name: string,
       pipeSize: number,
-      isFailRecognize: boolean,
-      isNeedAS: boolean,
+      isFailRecognize?: boolean,
+      isNeedAS?: boolean,
    };
 
 export type GeneralObject = {
@@ -13,7 +13,7 @@ export type GeneralObject = {
 
 export type ConsumerMeter =
    {
-      datetime: Date,
+      datetime?: Date,
       unixtime: number,
       imageURI: string,
       value: number,
