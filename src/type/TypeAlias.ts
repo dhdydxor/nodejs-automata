@@ -3,8 +3,8 @@ export type Consumer =
       pk: string,
       name: string,
       pipeSize: number,
-      isFailRecognize: boolean,
-      isNeedAS: boolean,
+      isFailRecognize?: boolean,
+      isNeedAS?: boolean,
    };
 
 export type GeneralObject = {
