@@ -41,15 +41,12 @@ const HttpRequest =
          }
 
          const response: AxiosResponse<string> = await axios.get(uri, { params: parameter, headers: header });
-
          return response;
       }
       catch (error)
       {
          return error.response;
       }
-
-
    },
 
    put: async (uri: string, body?: string, header?: any) =>
