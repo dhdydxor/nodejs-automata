@@ -66,7 +66,7 @@ const RequestUtil =
 
       if (typeof response !== "undefined" && typeof response.data !== "undefined")
       {
-         return response.data;
+         return response.data.content;
       }
 
       return undefined;
@@ -140,12 +140,20 @@ const RequestUtil =
       {
          return response.data.content;
       }
-
       return undefined;
+   },
 
+   getImage: async (uri: string, dest: string, token: string) =>
+   {
+      const header =
+      {
+         authorization: "Bearer " + token
+      };
+
+      let result: any = await HttpRequest.getBinary(uri, dest, header);
+
+      return result;
    }
-
-
 };
 
 export default RequestUtil;

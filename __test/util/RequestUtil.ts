@@ -28,8 +28,6 @@ describe('RequestUtil', () =>
         let clientId: any = consumerList[ 0 ].idClientId;
         let result: any = await RequestUtil.getConsumerDetailList(clientId, token);
 
-        console.log(result);
-
         assert.notEqual(result, undefined);
     });
 
@@ -61,5 +59,13 @@ describe('RequestUtil', () =>
         assert.notEqual(result, undefined);
     });
 
+    it("getImage", async () =>
+    {
+        let token: any = await RequestUtil.getAuthToken(process.env.TEST_LOGIN_ID, process.env.TEST_DECODE);
+        const uri = "https://hycheck-gyeryong.neoidm.com:8989/api/image/HYCHECK/8001/300010046700/353220621778981/2022/2/1645681102.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJub25lIn0.eyJpZCI6IjE2NDU2ODExMDIuanBnIiwiZXhwIjoxNjQ1Nzc3MTY5LCJpYXQiOjE2NDU2OTA3Njl9.";
+        const result = await RequestUtil.getImage(uri, "C:/Users/OhYongtaek/Desktop/Workspase/nodejs/nodejs-automata/image/test.jpg", token);
+
+        // assert.notEqual(result, undefined);
+    });
 
 });
