@@ -13,7 +13,7 @@ export type GeneralObject = {
 
 export type ConsumerMeter =
    {
-      datetime: Date,
+      datetime?: Date,
       unixtime: number,
       imageURI: string,
       value: number,
