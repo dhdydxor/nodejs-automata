@@ -1,5 +1,8 @@
 import axios, { AxiosRequestConfig, AxiosRequestHeaders, AxiosResponse } from 'axios';
-import Response from 'express';
+import Fs from "fs";
+import https from "https";
+
+require('dotenv').config();
 
 const HttpRequest =
 {
@@ -75,9 +78,29 @@ const HttpRequest =
 
    },
 
-   getBinary: (uri: string, parameter: object | undefined): any =>
+   getBinary: async (uri: string, dest: string, header?: AxiosRequestHeaders) =>
    {
+      if (typeof header === "undefined")
+      {
+         header = {};
+      }
 
+      const wStream = Fs.createWriteStream(dest);
+      const response = await axios.get(uri, {
+         headers: header,
+         responseType: "stream",
+         httpsAgent: new https.Agent({ rejectUnauthorized: false })
+      });
+
+      response.data.pipe(wStream);
+
+      const result: any = new Promise((resolve, reject) =>
+      {
+         wStream.on("finish", resolve);
+         wStream.on("error", reject);
+      });
+
+      return;
    }
 
 };
