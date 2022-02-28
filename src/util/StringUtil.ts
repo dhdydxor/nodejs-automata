@@ -6,7 +6,7 @@ const StringUtil =
    {
       try
       {
-         let result = base64.encode(plain_str); console.log(result);
+         let result = base64.encode(plain_str);
 
          return result;
       }
