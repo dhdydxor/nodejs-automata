@@ -10,5 +10,7 @@ dist/
 airtm/
 airtm*
 
+image/
+
 jwt-config.js
 yarn-error.log

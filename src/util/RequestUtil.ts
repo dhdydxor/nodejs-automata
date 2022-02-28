@@ -21,13 +21,13 @@ const RequestUtil =
       return "";
    },
 
-   getConsumerList: async (token: string) =>
+   getConsumerList: async (token: string, size: number = 2000): Promise<any> =>
    {
       const parameter: any = {
          organizationId: "190867",
          sort: "idClientId,asc",
          page: 0,
-         size: 2000
+         size: size
       };
 
       const header =
@@ -45,7 +45,7 @@ const RequestUtil =
       return undefined;
    },
 
-   getConsumerDetailList: async (clientId: string, token: string) =>
+   getConsumerDetailList: async (token: string, clientId: string, size: number = 5000) =>
    {
       const parameters: any = {
          officeCode: "8001",
@@ -54,7 +54,7 @@ const RequestUtil =
          to: "1644937199000",
          sortAsc: "ASC",
          page: 0,
-         size: 10
+         size: size
       };
 
       const header =
@@ -143,7 +143,7 @@ const RequestUtil =
       return undefined;
    },
 
-   getImage: async (uri: string, dest: string, token: string) =>
+   getImage: async (token: string, uri: string, dest: string) =>
    {
       const header =
       {
