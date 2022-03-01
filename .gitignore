@@ -1,16 +1,12 @@
-__tmp/
 
 .idea/
-.vscode/
+# 개인설정 따라다니도록 하자. 설정하기 귀찮아요;.vscode/
 node_modules/
 
 build/
-dist/
+build/
 
-airtm/
-airtm*
 
 image/
 
-jwt-config.js
 yarn-error.log
