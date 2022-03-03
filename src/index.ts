@@ -18,12 +18,9 @@ async function test()
       RequestUtil.getImage(token, process.env.IMAGE_URI_PREFIX + detailList.filepath, "./images/" + detailList.strValue);
     }
   });
-
-
-
 };
 
-console.log("start");
+
 test();
 
 /* const app = express();
