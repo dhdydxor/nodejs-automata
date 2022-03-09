@@ -2,11 +2,12 @@
   "name": "otow-mata-nodejs-bot",
   "version": "0.0.1",
   "scripts": {
-    "start": "npm run build-ts && npm run build-live-03",
+    "start": "npm run build-ts && npm run build-live-04",
     "build-ts": "babel src --out-dir build --extensions '.ts'",
     "build-live-01": "nodemon --watch '*.ts' --exec ts-node -r tsconfig-paths/register src/all-image-download.ts",
     "build-live-02": "nodemon --watch '*.ts' --exec ts-node -r tsconfig-paths/register src/random-image-pick.ts",
     "build-live-03": "nodemon --watch '*.ts' --exec ts-node -r tsconfig-paths/register src/recognize-digits.ts",
+    "build-live-04": "nodemon --watch '*.ts' --exec ts-node -r tsconfig-paths/register src/generate-train-image.ts",
     "test": "npx mocha __test/**/*.ts -r ts-node/register -r tsconfig-paths/register  --timeout 15000"
   },
   "devDependencies": {
@@ -41,6 +42,7 @@
     "babel-plugin-root-import": "^6.6.0",
     "base-64": "^1.0.0",
     "body-parser": "^1.18.1",
+    "canvas": "^2.9.0",
     "chai-http": "^4.3.0",
     "cute-string-util": "^0.0.7",
     "dotenv": "^16.0.0",
