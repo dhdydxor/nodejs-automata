@@ -86,15 +86,21 @@ const HttpRequest =
       }
 
       const wStream = Fs.createWriteStream(dest);
-      const response = await axios.get(uri, { headers: header, responseType: "stream", httpsAgent: new https.Agent({ rejectUnauthorized: false }) });
+      const response = await axios.get(uri, {
+         headers: header,
+         responseType: "stream",
+         httpsAgent: new https.Agent({ rejectUnauthorized: false })
+      });
 
       response.data.pipe(wStream);
 
-      new Promise((resolve, reject) =>
+      const result: any = new Promise((resolve, reject) =>
       {
-         wStream.on("finish", () => { resolve(true); });
-         wStream.on("finish", () => { resolve(false); });
+         wStream.on("finish", resolve);
+         wStream.on("error", reject);
       });
+
+      return result;
    }
 
 };

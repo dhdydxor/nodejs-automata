@@ -21,7 +21,7 @@ const RequestUtil =
       return "";
    },
 
-   getConsumerList: async (token: string, size: number = 2000): Promise<any> =>
+   getConsumerList: async (token: string, page: number = 0, size: number = 100): Promise<any> =>
    {
       const parameter: any = {
          organizationId: "190867",
@@ -150,9 +150,7 @@ const RequestUtil =
          authorization: "Bearer " + token
       };
 
-      let result: any = await HttpRequest.getBinary(uri, dest, header);
-
-      return result;
+      await HttpRequest.getBinary(uri, dest, header);
    }
 };
 

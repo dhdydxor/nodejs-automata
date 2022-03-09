@@ -1,15 +1,15 @@
-import { Consumer, ConsumerMeter, GeneralObject } from "src/type/TypeAlias";
+import { Consumer, ConsumerMeter, JSONObject } from "src/type/TypeAlias";
 import axios, { AxiosResponse } from 'axios';
 
 const ParseUtil =
 {
-   consumerListJsonToConsumerArray: (content: GeneralObject): Consumer[] =>
+   consumerListJsonToConsumerArray: (content: JSONObject): Consumer[] =>
    {
       let result: Consumer[] = [];
 
       if (typeof content !== "undefined")
       {
-         content.map((v: GeneralObject) =>
+         content.map((v: JSONObject) =>
          {
             let obj: Consumer = {
                name: v.name,
@@ -26,13 +26,13 @@ const ParseUtil =
       return [];
    },
 
-   consumerJsonMeterArray: (detail: GeneralObject): ConsumerMeter[] =>
+   consumerJsonMeterArray: (detail: JSONObject): ConsumerMeter[] =>
    {
       let result: ConsumerMeter[] = [];
 
       if (typeof detail.content !== "undefined")
       {
-         detail.content.map((v: GeneralObject) =>
+         detail.content.map((v: JSONObject) =>
          {
             let obj: ConsumerMeter = {
                datetime: new Date(v.time),
