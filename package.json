@@ -1,7 +1,14 @@
 {
-  "name": "ctrls-rest-api-ts-nodejs",
+  "name": "otow-mata-nodejs-bot",
   "version": "0.0.1",
-  "description": "Awesome project developed with TypeORM.",
+  "scripts": {
+    "start": "npm run build-ts && npm run build-live-03",
+    "build-ts": "babel src --out-dir build --extensions '.ts'",
+    "build-live-01": "nodemon --watch '*.ts' --exec ts-node -r tsconfig-paths/register src/all-image-download.ts",
+    "build-live-02": "nodemon --watch '*.ts' --exec ts-node -r tsconfig-paths/register src/random-image-pick.ts",
+    "build-live-03": "nodemon --watch '*.ts' --exec ts-node -r tsconfig-paths/register src/recognize-digits.ts",
+    "test": "npx mocha __test/**/*.ts -r ts-node/register -r tsconfig-paths/register  --timeout 15000"
+  },
   "devDependencies": {
     "@babel/cli": "^7.16.0",
     "@babel/core": "^7.16.0",
@@ -42,13 +49,8 @@
     "fs": "^0.0.1-security",
     "jsonwebtoken": "^8.5.1",
     "path": "^0.12.7",
-    "reflect-metadata": "^0.1.13"
-  },
-  "scripts": {
-    "start": "npm run build-ts && npm run build-live",
-    "build-ts": "babel src --out-dir build --extensions '.ts'",
-    "build-live": "nodemon --watch '*.ts' --exec ts-node -r tsconfig-paths/register src/index.ts",
-    "test": "npx mocha __test/**/*.ts -r ts-node/register -r tsconfig-paths/register  --timeout 15000"
+    "reflect-metadata": "^0.1.13",
+    "tesseract.js": "^2.1.5"
   },
   "main": "ormconfig.js",
   "directories": {
