@@ -2,12 +2,13 @@
   "name": "otow-mata-nodejs-bot",
   "version": "0.0.1",
   "scripts": {
-    "start": "npm run build-ts && npm run build-live-04",
+    "start": "npm run build-ts && npm run build-live-05",
     "build-ts": "babel src --out-dir build --extensions '.ts'",
     "build-live-01": "nodemon --watch '*.ts' --exec ts-node -r tsconfig-paths/register src/all-image-download.ts",
     "build-live-02": "nodemon --watch '*.ts' --exec ts-node -r tsconfig-paths/register src/random-image-pick.ts",
     "build-live-03": "nodemon --watch '*.ts' --exec ts-node -r tsconfig-paths/register src/recognize-digits.ts",
     "build-live-04": "nodemon --watch '*.ts' --exec ts-node -r tsconfig-paths/register src/generate-train-image.ts",
+    "build-live-05": "nodemon --watch '*.ts' --exec ts-node -r tsconfig-paths/register src/jpg-to-png.ts",
     "test": "npx mocha __test/**/*.ts -r ts-node/register -r tsconfig-paths/register  --timeout 15000"
   },
   "devDependencies": {
@@ -49,6 +50,7 @@
     "express": "^4.15.4",
     "express-http-context": "^1.2.4",
     "fs": "^0.0.1-security",
+    "jimp": "^0.16.1",
     "jsonwebtoken": "^8.5.1",
     "path": "^0.12.7",
     "reflect-metadata": "^0.1.13",
